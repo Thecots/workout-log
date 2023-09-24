@@ -69,7 +69,7 @@ class Workouts{
         dateDiv.className = "date";
         
         const pElement1 = document.createElement("p");
-        pElement1.textContent = this.GetDate();
+        pElement1.textContent = this.date == undefined ? "No data available" : this.date;
         
         const pElement2 = document.createElement("p");
         pElement2.textContent = this.calculateDaysPassed();
