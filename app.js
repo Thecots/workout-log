@@ -1,5 +1,6 @@
 const actions_grid = document.querySelector(".actions_grid");
-
+const date_input = document.querySelector(".input_date");
+const select = document.querySelector(".select");
 class Workouts{
     constructor(name, id, date){
         this.name = name;
@@ -91,7 +92,8 @@ let workouts = [];
 
 function BuildActionsButtons()
 {
-    const sortedArray = workouts.sort((a, b) => b.PassedDays() - a.PassedDays());
+    const tmp = workouts;
+    const sortedArray = tmp.sort((a, b) => b.PassedDays() - a.PassedDays());
 
     actions_grid.innerHTML = "";
     sortedArray.forEach(element => {
@@ -103,6 +105,7 @@ function SetDate(id){
     workouts.find(n => n.id === id).SetDate();
     SaveData();
     BuildActionsButtons();
+    AdjustDateInit();   
 }
 
 function GetData(){
@@ -120,9 +123,29 @@ function GetData(){
     BuildActionsButtons();
 }
 
+function AdjustDateInit(){
+    select.innerHTML = "";
+    workouts.forEach(function(opcion) {
+        option = document.createElement('option');
+        option.value = opcion.id;
+        option.text = opcion.GetName();
+        select.appendChild(option);
+    });
+}
+
+function UpdateDate(){
+    
+    var parts = date_input.value.split('-');
+    var transformedDate = parts[0] + '/' + parts[1] + '/' +  parts[2]
+    workouts.find(n => n.id == select.value).date = transformedDate;
+    SaveData();
+    BuildActionsButtons();
+    AdjustDateInit();
+}
+
 function SaveData(){
     localStorage.setItem("pdf_workouts", JSON.stringify(workouts))
 }
 
 GetData();
-
+AdjustDateInit();

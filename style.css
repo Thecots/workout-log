@@ -160,6 +160,29 @@ main section .title{
     background: #202022;
 }
 
+.adjust_btn
+{
+    font-weight: 600;
+    padding: 5px 15px;
+    background-color: #101010;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.settings{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.select, .input_date{
+    background-color: #101010;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+}
 
 
 /* SCROLLBAR */
