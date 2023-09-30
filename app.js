@@ -1,6 +1,7 @@
 const actions_grid = document.querySelector(".actions_grid");
 const date_input = document.querySelector(".input_date");
 const select = document.querySelector(".select");
+
 class Workouts{
     constructor(name, id, date){
         this.name = name;
@@ -134,13 +135,14 @@ function AdjustDateInit(){
 }
 
 function UpdateDate(){
-    
+    var val = select.value;
     var parts = date_input.value.split('-');
     var transformedDate = parts[0] + '/' + parts[1] + '/' +  parts[2]
     workouts.find(n => n.id == select.value).date = transformedDate;
     SaveData();
     BuildActionsButtons();
     AdjustDateInit();
+    select.value = val;
 }
 
 function SaveData(){
