@@ -31,7 +31,7 @@ class Workouts{
         const date2 = new Date(this. GetDate());
         const Difference_In_Time = date2.getTime() - date1.getTime();
         const Difference_In_Days =  Difference_In_Time / (1000 * 3600 * 24);
-        return isNaN(Difference_In_Days) ? "No data available" : `${Difference_In_Days} day${Difference_In_Days != 1 ? "s":""} ago`;
+        return isNaN(Difference_In_Days) ? "No data available" : `${Math.round(Difference_In_Days)} day${Difference_In_Days != 1 ? "s":""} ago`;
     }
 
     PassedDays(){
@@ -39,7 +39,8 @@ class Workouts{
         const date2 = new Date(this. GetDate());
         const Difference_In_Time = date2.getTime() - date1.getTime();
         const Difference_In_Days =  Difference_In_Time / (1000 * 3600 * 24);
-        return isNaN(Difference_In_Days) ? 999 : Difference_In_Days;
+        debugger
+        return isNaN(Difference_In_Days) ? 999 : Math.round(Difference_In_Days);
     }
 
     GetDate(){
