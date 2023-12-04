@@ -39,7 +39,6 @@ class Workouts{
         const date2 = new Date(this. GetDate());
         const Difference_In_Time = date2.getTime() - date1.getTime();
         const Difference_In_Days =  Difference_In_Time / (1000 * 3600 * 24);
-        debugger
         return isNaN(Difference_In_Days) ? 999 : Math.round(Difference_In_Days);
     }
 
